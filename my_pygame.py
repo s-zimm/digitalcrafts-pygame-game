@@ -14,6 +14,7 @@ def main():
 
     stop_game = False
     while not stop_game:
+        monster_x = 0
         for event in pygame.event.get():
 
             # Event handling
@@ -23,7 +24,7 @@ def main():
 
 
         # Game logic
-
+        monster_x += 1
         # Draw Images
         hero_image = pygame.image.load('images/hero.png').convert_alpha()
         monster_image = pygame.image.load('images/monster.png').convert_alpha()
@@ -36,7 +37,7 @@ def main():
         # Game display
         screen.blit(background_image, (0, 0))
         screen.blit(hero_image, (400, 400))
-        screen.blit(monster_image, (50, 50))
+        screen.blit(monster_image, (50, monster_x))
         pygame.display.update()
         clock.tick(60)
 

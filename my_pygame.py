@@ -24,12 +24,19 @@ def main():
 
         # Game logic
 
+        # Draw Images
+        hero_image = pygame.image.load('images/hero.png').convert_alpha()
+        monster_image = pygame.image.load('images/monster.png').convert_alpha()
+
+
         # Draw background
         background_image = pygame.image.load('images/background.png').convert_alpha()
         screen.fill(blue_color)
 
         # Game display
         screen.blit(background_image, (0, 0))
+        screen.blit(hero_image, (400, 400))
+        screen.blit(monster_image, (50, 50))
         pygame.display.update()
         clock.tick(60)
 

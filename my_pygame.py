@@ -34,6 +34,7 @@ def main():
             e += 1
             if e > width:
                 e = 0
+            print e
             return e
 
         # Monster moving left
@@ -41,6 +42,7 @@ def main():
             w -= 1
             if w < 0:
                 w = width
+            print w
             return w
 
         # Monster moving south
@@ -48,6 +50,7 @@ def main():
             s += 1
             if s > height:
                 s = 0
+            print s
             return s
 
         # Monster moving north
@@ -55,12 +58,20 @@ def main():
             n -= 1
             if n < 0:
                 n = height
+            print n
             return n
 
-        # Monster randomization
+        # Monster randomization x
         def rand_move_x(dir1, dir2):
             directs = [dir1, dir2]
             return random.choice(directs)
+            print random.choice(directs)
+
+        # Monster randomization y
+        def rand_move_y(dir1, dir2):
+            directs = [dir1, dir2]
+            if time.time() > 3:
+                return random.choice(directs)
 
             
         # Draw Images
@@ -75,7 +86,9 @@ def main():
         # Game display
         screen.blit(background_image, (0, 0))
         screen.blit(hero_image, (400, 400))
-        screen.blit(monster_image, (rand_move_x(monst_east(monster_x), monst_west(monster_x)), monst_north(monster_y)))
+        monster_x = rand_move_x(monst_east(monster_x), monst_west(monster_x))
+        monster_y = monst_north(monster_y)
+        screen.blit(monster_image, (monster_x, monster_y))
         pygame.display.update()
         clock.tick(60)
 
